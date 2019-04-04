@@ -13,6 +13,7 @@ namespace AsyncInn.Data
 
         }
 
+        // Composite Key Creator
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<HotelRoom>().HasKey(ce => new { ce.HotelID, ce.RoomNumber });
