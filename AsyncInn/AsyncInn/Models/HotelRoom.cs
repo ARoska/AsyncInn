@@ -14,7 +14,7 @@ namespace AsyncInn.Data
         public bool PetFriendly { get; set; }
 
         // Navigation Properties
-        public ICollection<Hotel> Hotels { get; set; }
-        public ICollection<Room> Rooms { get; set; }
+        public Hotel Hotels { get; set; }
+        public Room Rooms { get; set; }
     }
 }
