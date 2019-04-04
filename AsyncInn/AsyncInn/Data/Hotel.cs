@@ -13,5 +13,8 @@ namespace AsyncInn.Data
         public string City { get; set; }
         public string State { get; set; }
         public string PhoneNumber { get; set; }
+
+        // Navigation Properties
+        public ICollection<HotelRoom> HotelRooms { get; set; }
     }
 }

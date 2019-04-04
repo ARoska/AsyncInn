@@ -7,5 +7,11 @@ namespace AsyncInn.Data
 {
     public class RoomAmenities
     {
+        public int RoomID { get; set; }
+        public int AmenitiesID { get; set; }
+
+        // Navigation Properties
+        public ICollection<Room> Rooms { get; set; }
+        public ICollection<Amenities> Amenities { get; set; }
     }
 }
