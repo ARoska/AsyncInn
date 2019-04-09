@@ -1,9 +1,37 @@
 ﻿body {
-    background-color: lightblue;
+    background-color: #80B5B8;
 
 }
 
 h1 {
     font-weight: bolder;
-    font-size: 48px;
+    font-size: 24px;
+
 }
+
+ul {
+    display: inline;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #4E5248;
+
+}
+
+li {
+    float: left;
+
+}
+
+li a {
+    color: white;
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none;
+
+}
+
+    li a:hover {
+        background-color: #306272;
+
+    }
