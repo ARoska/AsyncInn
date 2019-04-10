@@ -11,15 +11,18 @@ namespace AsyncInn.Models.Interfaces
         Task CreateHotel(Hotel hotel);
 
         // Update a Hotel
-        void UpdateHotel(int id);
+        Task UpdateHotel(Hotel hotel);
 
         // Delete a Hotel
-        bool DeleteHotel(int id);
+        bool DeleteHotel(Hotel hotel);
 
         // Get a single Hotel's Details
         Task<Hotel> GetHotel(int id);
 
         // Get all Hotel's Details
         Task<List<Hotel>> GetHotels();
+
+        // Confirm Hotel Exists
+        bool HotelExists(int id);
     }
 }

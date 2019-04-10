@@ -39,17 +39,26 @@ namespace AsyncInn.Models.Services
             return await _context.Hotels.ToListAsync();
         }
 
-        public async void UpdateHotel(int id)
+        public async Task UpdateHotel(Hotel hotel)
         {
-            var hotel = await _context.Hotels.FindAsync(id);
-            
-
+            _context.Update(hotel);
+            await _context.SaveChangesAsync();
         }
 
-        public bool DeleteHotel(int id)
+        public bool DeleteHotel(Hotel hotel)
         {
-            throw new NotImplementedException();
+            if (hotel != null)
+            {
+                _context.Hotels.Remove(hotel);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
+        public bool HotelExists(int id)
+        {
+            return _context.Hotels.Any(e => e.ID == id);
+        }
     }
 }
