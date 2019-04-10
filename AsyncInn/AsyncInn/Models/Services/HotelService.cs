@@ -10,7 +10,7 @@ namespace AsyncInn.Models.Services
 {
     public class HotelService : IHotelManager
     {
-        private AsyncInnDbContext _context;
+        private readonly AsyncInnDbContext _context;
 
         public HotelService(AsyncInnDbContext context)
         {
