@@ -17,7 +17,7 @@ namespace AsyncInn.Models.Interfaces
         bool DeleteHotel(int id);
 
         // Get a single Hotel's Details
-        Hotel GetHotel(int id);
+        Task<Hotel> GetHotel(int id);
 
         // Get all Hotel's Details
         Task<List<Hotel>> GetHotels();

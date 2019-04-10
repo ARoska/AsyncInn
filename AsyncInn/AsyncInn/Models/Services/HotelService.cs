@@ -23,14 +23,15 @@ namespace AsyncInn.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public bool DeleteHotel(int id)
+        public async Task<Hotel> GetHotel(int id)
         {
-            throw new NotImplementedException();
-        }
+            var hotel = await _context.Hotels.FindAsync(id);
+            if (hotel == null)
+            {
+                return null;
+            }
 
-        public Hotel GetHotel(int id)
-        {
-            throw new NotImplementedException();
+            return hotel;
         }
 
         public async Task<List<Hotel>> GetHotels()
@@ -38,9 +39,17 @@ namespace AsyncInn.Models.Services
             return await _context.Hotels.ToListAsync();
         }
 
-        public void UpdateHotel(int id)
+        public async void UpdateHotel(int id)
+        {
+            var hotel = await _context.Hotels.FindAsync(id);
+            
+
+        }
+
+        public bool DeleteHotel(int id)
         {
             throw new NotImplementedException();
         }
+
     }
 }
