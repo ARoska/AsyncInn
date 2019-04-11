@@ -17,10 +17,9 @@ namespace AsyncInn.Models.Services
             _context = context;
         }
 
-        public async Task CreateHotel(Hotel hotel)
+        public async Task<List<Hotel>> GetHotels()
         {
-            _context.Add(hotel);
-            await _context.SaveChangesAsync();
+            return await _context.Hotels.ToListAsync();
         }
 
         public async Task<Hotel> GetHotel(int id)
@@ -34,9 +33,10 @@ namespace AsyncInn.Models.Services
             return hotel;
         }
 
-        public async Task<List<Hotel>> GetHotels()
+        public async Task CreateHotel(Hotel hotel)
         {
-            return await _context.Hotels.ToListAsync();
+            _context.Add(hotel);
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateHotel(Hotel hotel)

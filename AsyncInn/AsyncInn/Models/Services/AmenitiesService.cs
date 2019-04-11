@@ -1,5 +1,6 @@
 ﻿using AsyncInn.Data;
 using AsyncInn.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,29 +17,43 @@ namespace AsyncInn.Models.Services
             _context = context;
         }
 
-        public Task CreateAmenity(Amenities amenity)
+        public async Task<List<Amenities>> GetAmenities()
         {
-            throw new NotImplementedException();
+            return await _context.Amenities.ToListAsync();
+        }
+
+        public async Task<Amenities> GetAmenity(int id)
+        {
+            var amenity = await _context.Amenities.FindAsync(id);
+            if (amenity == null)
+            {
+                return null;
+            }
+
+            return amenity;
+        }
+
+        public async Task CreateAmenity(Amenities amenity)
+        {
+            _context.Add(amenity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAmenity(Amenities amenity)
+        {
+            _context.Update(amenity);
+            await _context.SaveChangesAsync();
         }
 
         public bool DeleteAmenity(Amenities amenity)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Amenities>> GetAmenities()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Amenities> GetAmenity(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateAmenity(Amenities amenity)
-        {
-            throw new NotImplementedException();
+            if (amenity != null)
+            {
+                _context.Amenities.Remove(amenity);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public bool AmenityExists(int id)

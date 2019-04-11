@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AsyncInn.Models.Interfaces
 {
-    interface IRoomManager
+    public interface IRoomManager
     {
         // Create a Room
         Task CreateRoom(Room room);
