@@ -48,7 +48,7 @@ namespace AsyncInn
             {
                 routes.MapRoute(
                 name: "default",
-                template: "{controller=Home}/{action=Index}/{id?}");
+                template: "{controller=Hotels}/{action=Index}/{id?}");
             });
 
             //app.Run(async (context) =>
