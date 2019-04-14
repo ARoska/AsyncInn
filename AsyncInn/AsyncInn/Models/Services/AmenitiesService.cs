@@ -24,18 +24,12 @@ namespace AsyncInn.Models.Services
 
         public async Task<Amenities> GetAmenity(int id)
         {
-            var amenity = await _context.Amenities.FindAsync(id);
-            if (amenity == null)
-            {
-                return null;
-            }
-
-            return amenity;
+            return await _context.Amenities.FindAsync(id);
         }
 
         public async Task CreateAmenity(Amenities amenity)
         {
-            _context.Add(amenity);
+            await _context.AddAsync(amenity);
             await _context.SaveChangesAsync();
         }
 
@@ -45,20 +39,15 @@ namespace AsyncInn.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public bool DeleteAmenity(Amenities amenity)
+        public async void DeleteAmenity(Amenities amenity)
         {
-            if (amenity != null)
-            {
-                _context.Amenities.Remove(amenity);
-                _context.SaveChanges();
-                return true;
-            }
-            return false;
+            _context.Amenities.Remove(amenity);
+            await _context.SaveChangesAsync();
         }
 
         public bool AmenityExists(int id)
         {
-            return _context.Amenities.Any(e => e.ID == id);
+            return _context.Amenities.Any(x => x.ID == id);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace AsyncInn.Models.Interfaces
         Task UpdateAmenity(Amenities amenity);
 
         // Delete a Amenity
-        bool DeleteAmenity(Amenities amenity);
+        void DeleteAmenity(Amenities amenity);
 
         // Get a single Amenity's Details
         Task<Amenities> GetAmenity(int id);
