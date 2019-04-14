@@ -50,7 +50,7 @@ namespace AsyncInn.Models.Services
 
         public bool HotelExists(int id)
         {
-            return _context.Hotels.Any(e => e.ID == id);
+            return _context.Hotels.Any(x => x.ID == id);
         }
     }
 }

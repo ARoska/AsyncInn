@@ -24,16 +24,15 @@ namespace AsyncInn.Models.Services
 
         public async Task<Room> GetRoom(int id)
         {
-            var room = await _context.Rooms
-                                     .Include(a => a.RoomAmenities)
-                                     .ThenInclude(a => a.Amenities)
-                                     .FirstOrDefaultAsync(x => x.ID == id);
-            return room;
+            return await _context.Rooms
+                                 .Include(a => a.RoomAmenities)
+                                 .ThenInclude(a => a.Amenities)
+                                 .FirstOrDefaultAsync(x => x.ID == id);
         }
 
         public async Task CreateRoom(Room room)
         {
-            _context.Add(room);
+            await _context.AddAsync(room);
             await _context.SaveChangesAsync();
         }
 
@@ -51,7 +50,7 @@ namespace AsyncInn.Models.Services
 
         public bool RoomExists(int id)
         {
-            return _context.Rooms.Any(e => e.ID == id);
+            return _context.Rooms.Any(x => x.ID == id);
         }
 
     }
