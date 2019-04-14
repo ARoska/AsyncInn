@@ -140,7 +140,10 @@ namespace AsyncInn.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var hotel = await _hotels.GetHotel(id);
-            _hotels.DeleteHotel(hotel);
+            if (hotel != null)
+            {
+                _hotels.DeleteHotel(hotel);
+            }
             return RedirectToAction(nameof(Index));
         }
 

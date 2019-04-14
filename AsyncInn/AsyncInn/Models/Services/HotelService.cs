@@ -24,18 +24,15 @@ namespace AsyncInn.Models.Services
 
         public async Task<Hotel> GetHotel(int id)
         {
-            var hotel = await _context.Hotels.FindAsync(id);
-            if (hotel == null)
-            {
-                return null;
-            }
-
-            return hotel;
+            return await _context.Hotels
+                                 .Include(r => r.HotelRooms)
+                                 .ThenInclude(r => r.Rooms)
+                                 .FirstOrDefaultAsync(x => x.ID == id);
         }
 
         public async Task CreateHotel(Hotel hotel)
         {
-            _context.Add(hotel);
+            await _context.AddAsync(hotel);
             await _context.SaveChangesAsync();
         }
 
@@ -45,15 +42,10 @@ namespace AsyncInn.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public bool DeleteHotel(Hotel hotel)
+        public async void DeleteHotel(Hotel hotel)
         {
-            if (hotel != null)
-            {
-                _context.Hotels.Remove(hotel);
-                _context.SaveChanges();
-                return true;
-            }
-            return false;
+            _context.Hotels.Remove(hotel);
+            await _context.SaveChangesAsync();
         }
 
         public bool HotelExists(int id)

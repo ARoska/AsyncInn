@@ -141,7 +141,11 @@ namespace AsyncInn.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var room = await _room.GetRoom(id);
-            _room.DeleteRoom(room);
+            if (room != null)
+            {
+                _room.DeleteRoom(room);
+
+            }
             return RedirectToAction(nameof(Index));
         }
 

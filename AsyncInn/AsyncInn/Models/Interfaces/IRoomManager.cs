@@ -14,7 +14,7 @@ namespace AsyncInn.Models.Interfaces
         Task UpdateRoom(Room room);
 
         // Delete a Room
-        bool DeleteRoom(Room room);
+        void DeleteRoom(Room room);
 
         // Get a single Room's Details
         Task<Room> GetRoom(int id);
