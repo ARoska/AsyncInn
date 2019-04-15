@@ -30,11 +30,11 @@ Then select and open ```AsyncInn.sln```
 ## Visuals
 
 ##### Hotels List
-![Hotels List Index](https://via.placeholder.com/750x500)
+![Hotels List Index](https://github.com/Roketsu86/AsyncInn/blob/master/Assets/AllHotels.jpg)
 ##### Creating a new Room
-![Creating a new Room](https://via.placeholder.com/750x500)
+![Creating a new Room](https://github.com/Roketsu86/AsyncInn/blob/master/Assets/CreateRoom.jpg)
 ##### Viewing Hotel Details
-![Viewing Hotel Details](https://via.placeholder.com/750x500)
+![Viewing Hotel Details](https://github.com/Roketsu86/AsyncInn/blob/master/Assets/HotelDetails.jpg)
 
 ------------------------------
 
