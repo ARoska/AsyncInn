@@ -21,6 +21,7 @@ namespace AsyncInn.Models
         [Required]
         [Display(Name = "Phone Number")]
         [DataType(DataType.PhoneNumber)]
+        // Regex found at https://stackoverflow.com/questions/28904826/phone-number-validation-mvc
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         public string PhoneNumber { get; set; }
 

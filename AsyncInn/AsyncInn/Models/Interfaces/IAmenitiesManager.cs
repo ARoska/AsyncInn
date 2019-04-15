@@ -7,6 +7,12 @@ namespace AsyncInn.Models.Interfaces
 {
     public interface IAmenitiesManager
     {
+        // Get a single Amenity's Details
+        Task<Amenities> GetAmenity(int id);
+
+        // Get all Amenities Details
+        Task<List<Amenities>> GetAmenities(string searchString);
+
         // Create a Amenity
         Task CreateAmenity(Amenities amenity);
 
@@ -15,12 +21,6 @@ namespace AsyncInn.Models.Interfaces
 
         // Delete a Amenity
         void DeleteAmenity(Amenities amenity);
-
-        // Get a single Amenity's Details
-        Task<Amenities> GetAmenity(int id);
-
-        // Get all Amenities Details
-        Task<List<Amenities>> GetAmenities();
 
         // Confirm Amenity Exists
         bool AmenityExists(int id);

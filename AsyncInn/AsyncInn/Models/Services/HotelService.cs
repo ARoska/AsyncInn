@@ -17,9 +17,17 @@ namespace AsyncInn.Models.Services
             _context = context;
         }
 
-        public async Task<List<Hotel>> GetHotels()
+        public async Task<List<Hotel>> GetHotels(string searchString)
         {
-            return await _context.Hotels.ToListAsync();
+            var hotels = from h in _context.Hotels
+                         select h;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                hotels = hotels.Where(s => s.Name.Contains(searchString));
+            }
+
+            return await hotels.ToListAsync();
         }
 
         public async Task<Hotel> GetHotel(int id)
@@ -42,10 +50,10 @@ namespace AsyncInn.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public async void DeleteHotel(Hotel hotel)
+        public void DeleteHotel(Hotel hotel)
         {
             _context.Hotels.Remove(hotel);
-            await _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
         }
 
         public bool HotelExists(int id)

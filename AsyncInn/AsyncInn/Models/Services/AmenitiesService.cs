@@ -17,9 +17,17 @@ namespace AsyncInn.Models.Services
             _context = context;
         }
 
-        public async Task<List<Amenities>> GetAmenities()
+        public async Task<List<Amenities>> GetAmenities(string searchString)
         {
-            return await _context.Amenities.ToListAsync();
+            var amenities = from a in _context.Amenities
+                            select a;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                amenities = amenities.Where(s => s.Name.Contains(searchString));
+            }
+
+            return await amenities.ToListAsync();
         }
 
         public async Task<Amenities> GetAmenity(int id)
@@ -39,10 +47,10 @@ namespace AsyncInn.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public async void DeleteAmenity(Amenities amenity)
+        public void DeleteAmenity(Amenities amenity)
         {
             _context.Amenities.Remove(amenity);
-            await _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
         }
 
         public bool AmenityExists(int id)

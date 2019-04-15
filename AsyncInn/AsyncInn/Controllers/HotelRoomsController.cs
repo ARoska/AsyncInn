@@ -35,9 +35,9 @@ namespace AsyncInn.Controllers
             }
 
             var hotelRoom = await _context.HotelRooms
-                .Include(h => h.Hotels)
-                .Include(h => h.Rooms)
-                .FirstOrDefaultAsync(m => m.HotelID == id);
+                                          .Include(h => h.Hotels)
+                                          .Include(h => h.Rooms)
+                                          .FirstOrDefaultAsync(m => m.HotelID == id);
             if (hotelRoom == null)
             {
                 return NotFound();

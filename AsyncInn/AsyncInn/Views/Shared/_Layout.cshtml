@@ -22,33 +22,31 @@
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">Hotels<span class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" asp-controller="Hotels" asp-action="Index">View Hotels</a>
-                        <a class="dropdown-item" asp-controller="Hotels" asp-action="Index">Find a Hotel</a>
-                        <a class="dropdown-item" asp-controller="Hotels" asp-action="Create">Add a new Hotel</a>
+                        <a class="dropdown-item" asp-controller="Hotels" asp-action="Index">View All Hotels</a>
+                        <a class="dropdown-item" asp-controller="Hotels" asp-action="Create">Add a New Hotel</a>
                         <a class="dropdown-item" asp-controller="HotelRooms" asp-action="Create">Add a Room to a Hotel</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">Room Layouts<span class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" asp-controller="Rooms" asp-action="Index">View Room Layouts</a>
-                        <a class="dropdown-item" asp-controller="Rooms" asp-action="Index">Find a Room Layout</a>
+                        <a class="dropdown-item" asp-controller="Rooms" asp-action="Index">View All Room Layouts</a>
                         <a class="dropdown-item" asp-controller="Rooms" asp-action="Create">Add a new Room Layout</a>
-                        <a class="dropdown-item" asp-controller="HotelRooms" asp-action="Index">View all Room Assignments</a>
+                        <a class="dropdown-item" asp-controller="HotelRooms" asp-action="Index">View All Hotel-Room Assignments</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink" aria-haspopup="true" aria-expanded="false">Amenities<span class="caret"></span></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" asp-controller="Amenities" asp-action="Index">View Amenities</a>
+                        <a class="dropdown-item" asp-controller="Amenities" asp-action="Index">View All Amenities</a>
                         <a class="dropdown-item" asp-controller="Amenities" asp-action="Create">Add a new Amenity</a>
-                        <a class="dropdown-item" asp-controller="RoomAmenities" asp-action="Index">Add Amenities to a Room Layout</a>
+                        <a class="dropdown-item" asp-controller="RoomAmenities" asp-action="Index">View All Room-Amenity Assignments</a>
+                        <a class="dropdown-item" asp-controller="RoomAmenities" asp-action="Create">Add Amenities to a Room Layout</a>
                     </div>
                 </li>
             </ul>
         </div>
     </nav>
-    @*<h4>@ViewBag.Heading</h4>*@
     <div>
         @RenderBody()
     </div>
