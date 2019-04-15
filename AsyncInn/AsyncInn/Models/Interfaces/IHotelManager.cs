@@ -7,6 +7,12 @@ namespace AsyncInn.Models.Interfaces
 {
     public interface IHotelManager
     {
+        // Get a single Hotel's Details
+        Task<Hotel> GetHotel(int id);
+
+        // Get all Hotel's Details
+        Task<List<Hotel>> GetHotels(string searchString);
+
         // Create a Hotel
         Task CreateHotel(Hotel hotel);
 
@@ -15,12 +21,6 @@ namespace AsyncInn.Models.Interfaces
 
         // Delete a Hotel
         void DeleteHotel(Hotel hotel);
-
-        // Get a single Hotel's Details
-        Task<Hotel> GetHotel(int id);
-
-        // Get all Hotel's Details
-        Task<List<Hotel>> GetHotels();
 
         // Confirm Hotel Exists
         bool HotelExists(int id);

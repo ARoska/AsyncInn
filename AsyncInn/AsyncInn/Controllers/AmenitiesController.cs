@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using AsyncInn.Data;
 using AsyncInn.Models;
 using AsyncInn.Models.Interfaces;
+using AsyncInn.Models.ViewModels;
 
 namespace AsyncInn.Controllers
 {
@@ -21,10 +22,17 @@ namespace AsyncInn.Controllers
         }
 
         // GET: Amenities
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            List<Amenities> myAmenities = await _amenities.GetAmenities();
-            return View(myAmenities);
+            List<Amenities> myAmenities = await _amenities.GetAmenities(searchString);
+
+            var amenities = new AmenitiesCount()
+            {
+                Amenities = myAmenities,
+                Count = myAmenities.Count()
+            };
+
+            return View(amenities);
         }
 
         // GET: Amenities/Details/5

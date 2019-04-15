@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AsyncInn.Models.Amenities>
+﻿@model AsyncInn.Models.ViewModels.AmenitiesCount
 
 @{
     ViewData["Title"] = "Index";
@@ -6,32 +6,43 @@
     Layout = "_Layout";
 }
 
-<h1>Index</h1>
+<h1>All Amenities</h1>
+<h6>Total Amenities: @Model.Count</h6>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form asp-controller="Amenities" asp-action="Index" method="get">
+    <p>
+        Name: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+        <a asp-controller="Amenities" asp-action="Index">Reset Filter</a> |
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Amenity Name
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Amenities)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

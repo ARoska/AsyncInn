@@ -17,9 +17,17 @@ namespace AsyncInn.Models.Services
             _context = context;
         }
 
-        public async Task<List<Room>> GetRooms()
+        public async Task<List<Room>> GetRooms(string searchString)
         {
-            return await _context.Rooms.ToListAsync();
+            var rooms = from r in _context.Rooms
+                        select r;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                rooms = rooms.Where(s => s.Name.Contains(searchString));
+            }
+
+            return await rooms.ToListAsync();
         }
 
         public async Task<Room> GetRoom(int id)
@@ -42,10 +50,10 @@ namespace AsyncInn.Models.Services
             await _context.SaveChangesAsync();
         }
 
-        public async void DeleteRoom(Room room)
+        public void DeleteRoom(Room room)
         {
             _context.Rooms.Remove(room);
-            await _context.SaveChangesAsync();
+            _context.SaveChangesAsync();
         }
 
         public bool RoomExists(int id)
